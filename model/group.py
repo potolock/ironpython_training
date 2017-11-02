@@ -1,0 +1,54 @@
+
+from sys import maxsize
+
+
+
+class Group:
+
+    def __init__(self, name=None):
+        self.name = name
+
+
+    def __repr__(self):
+        return self.name
+
+    def __eq__(self, other):
+        return self.name == other.name
+
+    def key(self):
+        return self.name
+
+
+class Contact:
+
+    def __init__(self, firstname=None, lastname=None, company=None, homepage=None, id=None, all_emails_from_home_page=None,
+                 all_phones_from_home_page=None, homephone=None, mobilephone=None, workphone=None, secondaryphone=None,
+                 address=None, email=None, email2=None, email3=None):
+        self.lastname = lastname
+        self.firstname = firstname
+        self.company  = company
+        self.homepage = homepage
+        self.address = address
+        self.homephone = homephone
+        self.mobilephone = mobilephone
+        self.workphone = workphone
+        self.secondaryphone = secondaryphone
+        self.id = id
+        self.email = email
+        self.email2 = email2
+        self.email3= email3
+        self.all_emails_from_home_page = all_emails_from_home_page
+        self.all_phones_from_home_page = all_phones_from_home_page
+
+    def __repr__(self):
+        return "%s:%s:%s:%s:%s:%s:%s" % (self.firstname, self.lastname,self.company,
+                                                                       self.address, self.email, self.homepage, self.id)
+
+    def __eq__(self, other):
+        return (self.id is None or other.id is None or self.id == other.id) and self.firstname == other.firstname
+
+    def id_or_max(self):
+        if self.id:
+            return int(self.id)
+        else:
+            return maxsize
